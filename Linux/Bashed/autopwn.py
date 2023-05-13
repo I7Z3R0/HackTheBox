@@ -1,6 +1,6 @@
 from pwn import *
 import netifaces as ni
-import urllib3, sys,argparse, subprocess,pty, time
+import urllib3, sys,argparse, subprocess, time
 urllib3.disable_warnings()
 warnings.filterwarnings("ignore", category=UserWarning, module="pwntools")
 
