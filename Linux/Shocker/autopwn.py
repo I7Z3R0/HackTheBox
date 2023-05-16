@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from pwn import *
 import netifaces as ni
 import urllib3, sys, argparse, subprocess, pty, time
